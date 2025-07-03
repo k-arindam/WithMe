@@ -6,16 +6,21 @@
 //
 
 import SwiftUI
+import AwesomeNavigation
 
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            let config = ANConfig(initialRoute: WMRoutes.home) { route in
+                switch route {
+                case .home:
+                    HomeView()
+                }
+            }
+            
+            ANApplication(with: config)
         }
-        .padding()
+        .padding(0.0)
     }
 }
 

@@ -1,0 +1,24 @@
+{
+  "originHash" : "0977086a9855a69696ff5942efefc60be498016c2150367624dba48d94f896e7",
+  "pins" : [
+    {
+      "identity" : "awesomenavigation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/k-arindam/AwesomeNavigation.git",
+      "state" : {
+        "revision" : "8e01dd80d8dea650434ca3e3808977c747435241",
+        "version" : "0.0.1"
+      }
+    },
+    {
+      "identity" : "swiftuicamera",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/k-arindam/SwiftUICamera.git",
+      "state" : {
+        "revision" : "8ab5b1af018e5ff666d00f15333b29e9564f8238",
+        "version" : "0.0.5"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		11FEFF612E170501000AEDB8 /* AwesomeNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 11FEFF602E170501000AEDB8 /* AwesomeNavigation */; };
+		11FEFF642E170534000AEDB8 /* SwiftUICamera in Frameworks */ = {isa = PBXBuildFile; productRef = 11FEFF632E170534000AEDB8 /* SwiftUICamera */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		11FEFF272E16FBFB000AEDB8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11FEFF612E170501000AEDB8 /* AwesomeNavigation in Frameworks */,
+				11FEFF642E170534000AEDB8 /* SwiftUICamera in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,8 @@
 			);
 			name = WithMe;
 			packageProductDependencies = (
+				11FEFF602E170501000AEDB8 /* AwesomeNavigation */,
+				11FEFF632E170534000AEDB8 /* SwiftUICamera */,
 			);
 			productName = WithMe;
 			productReference = 11FEFF192E16FBFA000AEDB8 /* WithMe.app */;
@@ -195,6 +204,10 @@
 			);
 			mainGroup = 11FEFF102E16FBFA000AEDB8;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				11FEFF5F2E170501000AEDB8 /* XCRemoteSwiftPackageReference "AwesomeNavigation" */,
+				11FEFF622E170534000AEDB8 /* XCRemoteSwiftPackageReference "SwiftUICamera" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 11FEFF1A2E16FBFA000AEDB8 /* Products */;
 			projectDirPath = "";
@@ -396,12 +409,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H56BQC5KZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need this to capture photo and record video";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need this to record video with sound";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -426,12 +441,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = H56BQC5KZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need this to capture photo and record video";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need this to record video with sound";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -562,6 +579,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		11FEFF5F2E170501000AEDB8 /* XCRemoteSwiftPackageReference "AwesomeNavigation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/k-arindam/AwesomeNavigation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+		11FEFF622E170534000AEDB8 /* XCRemoteSwiftPackageReference "SwiftUICamera" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/k-arindam/SwiftUICamera.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		11FEFF602E170501000AEDB8 /* AwesomeNavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11FEFF5F2E170501000AEDB8 /* XCRemoteSwiftPackageReference "AwesomeNavigation" */;
+			productName = AwesomeNavigation;
+		};
+		11FEFF632E170534000AEDB8 /* SwiftUICamera */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11FEFF622E170534000AEDB8 /* XCRemoteSwiftPackageReference "SwiftUICamera" */;
+			productName = SwiftUICamera;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 11FEFF112E16FBFA000AEDB8 /* Project object */;
 }
