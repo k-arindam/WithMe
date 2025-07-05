@@ -24,7 +24,7 @@ struct ShareImageIntent: AppIntent {
     var image: IntentFile
     
     @Dependency(
-        key: Constants.dataControllerKey
+        key: WMConstants.dataControllerKey
     )
     var dataController: WMDataController
     

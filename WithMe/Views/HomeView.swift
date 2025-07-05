@@ -8,22 +8,39 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var dataController: WMDataController
+    @EnvironmentObject private var dataController: WMDataController
+    
+    @State private var currentTab: HomeViewTab = .intelliSpace
     
     let shortcutService = WMShortcutService()
     
     var body: some View {
         VStack {
-            Image(uiImage: dataController.image)
-                .resizable()
-                .scaledToFit()
-            
-            Button("Add Share Screenshot Shortcut") {
-                Task { @MainActor in
-                    await shortcutService.add(shortcut: .shareScreenShot)
+            TabView(selection: $currentTab) {
+                ForEach(HomeViewTab.allCases) { tab in
+                    Tab(value: tab) {
+                        Text(tab.rawValue)
+                    } label: {
+                        Label(tab.rawValue, systemImage: tab.icon)
+                    }
                 }
             }
-            .buttonStyle(.borderedProminent)
+        }
+    }
+    
+    enum HomeViewTab: String, Identifiable, CaseIterable {
+        var id: String { rawValue }
+        
+        case intelliSpace = "IntelliSpace"
+        case collection = "Collection"
+        
+        var icon: String {
+            switch self {
+            case .intelliSpace:
+                return "apple.intelligence"
+            case .collection:
+                return "list.and.film"
+            }
         }
     }
 }

@@ -11,8 +11,12 @@ import AwesomeNavigation
 struct ContentView: View {
     var body: some View {
         VStack {
-            let config = ANConfig(initialRoute: WMRoutes.home) { route in
+            let config = ANConfig(initialRoute: WMRoutes.splash) { route in
                 switch route {
+                case .splash:
+                    SplashView()
+                case .login:
+                    LoginView()
                 case .home:
                     HomeView()
                 }

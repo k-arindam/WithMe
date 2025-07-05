@@ -10,18 +10,25 @@ import AppIntents
 
 @main
 struct WithMeApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     private let dataController: WMDataController
+    private let authController: WMAuthController
     
     init() {
         let dataController = WMDataController()
-        AppDependencyManager.shared.add(key: Constants.dataControllerKey, dependency: dataController)
+        AppDependencyManager.shared.add(key: WMConstants.dataControllerKey, dependency: dataController)
+        
         self.dataController = dataController
+        self.authController = WMAuthController()
     }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.dark)
                 .environmentObject(dataController)
+                .environmentObject(authController)
         }
     }
 }

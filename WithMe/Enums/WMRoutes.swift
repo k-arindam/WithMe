@@ -8,5 +8,7 @@
 import AwesomeNavigation
 
 enum WMRoutes: ANRoute, CaseIterable {
+    case splash
+    case login
     case home
 }
