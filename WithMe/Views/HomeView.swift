@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var dataController: WMDataController
     
-    @State private var currentTab: HomeViewTab = .intelliSpace
+    @State private var currentTab: HomeViewTab = .collection
     
     let shortcutService = WMShortcutService()
     
@@ -19,7 +19,17 @@ struct HomeView: View {
             TabView(selection: $currentTab) {
                 ForEach(HomeViewTab.allCases) { tab in
                     Tab(value: tab) {
-                        Text(tab.rawValue)
+                        switch tab {
+                        case .intelliSpace:
+                            Button("Add Shortcut") {
+                                Task {
+                                    await WMShortcutService().add(shortcut: .shareScreenShot)
+                                }
+                            }
+                            .buttonStyle(.glassProminent)
+                        case .collection:
+                            CollectionTab()
+                        }
                     } label: {
                         Label(tab.rawValue, systemImage: tab.icon)
                     }

@@ -9,4 +9,6 @@ import Foundation
 
 internal typealias JSON = [String: Any]
 
+internal typealias CodeSendable = Codable & Sendable
+
 internal typealias VoidCallback = () -> Void

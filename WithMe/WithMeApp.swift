@@ -16,6 +16,8 @@ struct WithMeApp: App {
     private let authController: WMAuthController
     
     init() {
+        WMUtils.createDirectories()
+        
         let dataController = WMDataController()
         AppDependencyManager.shared.add(key: WMConstants.dataControllerKey, dependency: dataController)
         
