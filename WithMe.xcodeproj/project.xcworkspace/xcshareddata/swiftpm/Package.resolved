@@ -1,5 +1,5 @@
 {
-  "originHash" : "14ad31ac5ec6e4a9c8cecf0def04c8005007a81be5c4c0ac9d9dfe2c6c6f1d01",
+  "originHash" : "ab7e73e07f44186f43a9687cd055fefc4dd36da0b286113b0f32612a6e849a4b",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -107,6 +107,15 @@
       "state" : {
         "revision" : "a0bc79961d7be727d258d33d5a6b2f1023270ba1",
         "version" : "1.22.5"
+      }
+    },
+    {
+      "identity" : "mlxkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/k-arindam/MLXKit",
+      "state" : {
+        "revision" : "dcdcb60ca322e4517c3fcdcb0caade283038bad6",
+        "version" : "0.0.4"
       }
     },
     {
