@@ -63,4 +63,6 @@ fastlane/test_output
 
 Keys/
 WithMe/GoogleService-Info.plist
-WithMe/MLModels
+WithMe/MLModels/
+*.mlmodel
+*.mlpackage
