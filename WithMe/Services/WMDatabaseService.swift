@@ -17,7 +17,7 @@ internal final class WMDatabaseService {
 //    let userdataCollection = Firestore.firestore().collection("user-data")
     let databaseQueue = DispatchQueue(label: "in.karindam.WithMe.databaseQueue", qos: .background)
     
-    func fetchUserData<T>() -> [T] where T: CodeSendable {
+    func fetchUserData<T>() -> [T] where T: Portable {
         if let data = try? Data(contentsOf: userDataURL),
            let value = try? decoder.decode([T].self, from: data) {
             return value
@@ -26,7 +26,7 @@ internal final class WMDatabaseService {
         return []
     }
     
-    func updateUserData<T>(with value: [T]) -> Void where T: CodeSendable {
+    func updateUserData<T>(with value: [T]) -> Void where T: Portable {
         self.databaseQueue.async {
             guard let jsonData = try? self.encoder.encode(value) else { return }
             try? jsonData.write(to: self.userDataURL)

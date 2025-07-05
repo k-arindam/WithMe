@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal struct WMEntity: Codable, Identifiable, Sendable, Hashable {
+internal struct WMEntity: Portable {
     init(jpeg: Data) {
         let id = UUID()
         let type = WMEntityType.image

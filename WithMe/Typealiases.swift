@@ -9,6 +9,12 @@ import Foundation
 
 internal typealias JSON = [String: Any]
 
-internal typealias CodeSendable = Codable & Sendable
+internal typealias Portable = Codable & Sendable & Hashable & Identifiable
 
 internal typealias VoidCallback = () -> Void
+
+internal typealias OCRData = [String]
+
+internal typealias Caption = String
+
+internal typealias Embedding = [Float]

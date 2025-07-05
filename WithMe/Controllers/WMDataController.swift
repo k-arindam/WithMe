@@ -11,10 +11,14 @@ import UIKit
 internal final class WMDataController: ObservableObject, @unchecked Sendable {
     internal init() {
         self.userData = db.fetchUserData()
+        for e in userData {
+            engine.process(image: UIImage(contentsOfFile: e.fullURL!.path())!)
+        }
     }
     
     @Published private(set) var userData: [WMEntity] = []
     
+    let engine = WMEngine()
     let db = WMDatabaseService()
     let fileManager = FileManager.default
     
