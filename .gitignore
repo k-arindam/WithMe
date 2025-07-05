@@ -66,3 +66,6 @@ WithMe/GoogleService-Info.plist
 WithMe/MLModels/
 *.mlmodel
 *.mlpackage
+*.mlmodelc
+*.mlpackagec
+*.bin
