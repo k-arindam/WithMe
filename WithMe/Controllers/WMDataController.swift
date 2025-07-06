@@ -23,11 +23,7 @@ internal final class WMDataController: ObservableObject, @unchecked Sendable {
     let fileManager = FileManager.default
     
     internal func handle(image data: Data) async -> Void {
-        guard let uiimage = UIImage(data: data),
-              let jpegData = uiimage.jpegData(compressionQuality: 1.0)
-        else { return }
-        
-        let entity = WMEntity(jpeg: jpegData)
+        let entity = WMEntity(image: data)
         entity.write()
         
         self.insertUserData(entity)

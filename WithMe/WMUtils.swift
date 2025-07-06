@@ -5,6 +5,7 @@
 //  Created by Arindam Karmakar on 05/07/25.
 //
 
+import UIKit
 import Foundation
 
 internal final class WMUtils {
@@ -12,6 +13,15 @@ internal final class WMUtils {
     
     static let fileManager = FileManager.default
     static let documentDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    
+    static var rootViewController: UIViewController? {
+        if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let rootVC = scene.windows.first?.rootViewController{
+            return rootVC
+        }
+        
+        return nil
+    }
     
     static func createDirectories() -> Void {
         for store in WMMediaStore.allCases {

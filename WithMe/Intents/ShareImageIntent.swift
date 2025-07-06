@@ -29,8 +29,9 @@ struct ShareImageIntent: AppIntent {
     var dataController: WMDataController
     
     func perform() async throws -> some IntentResult {
-        let _ = image.fileURL?.startAccessingSecurityScopedResource()
-        await dataController.handle(image: image.data)
+        if image.fileURL?.startAccessingSecurityScopedResource() ?? false {
+            await dataController.handle(image: image.data)
+        }
         
         return .result()
     }

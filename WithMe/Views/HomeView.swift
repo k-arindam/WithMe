@@ -16,17 +16,33 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
+            HStack {
+                Image("TxtWhiteExt")
+                    .resizable()
+                    .scaledToFit()
+                Spacer()
+            }
+            .frame(height: 24.0)
+            .padding(12.0)
+            .padding(.top, 8.0)
+            
             TabView(selection: $currentTab) {
                 ForEach(HomeViewTab.allCases) { tab in
                     Tab(value: tab) {
                         switch tab {
                         case .intelliSpace:
-                            Button("Add Shortcut") {
-                                Task {
-                                    await WMShortcutService().add(shortcut: .shareScreenShot)
+                            VStack {
+                                RoundedRectangle(cornerRadius: 12.0)
+                                    .fill(.clear)
+                                    .glassEffect(in: .rect(cornerRadius: 12.0))
+                                    .frame(width: 300, height: 300)
+                                Button("Add Shortcut") {
+                                    Task {
+                                        await WMShortcutService().add(shortcut: .shareScreenShot)
+                                    }
                                 }
+                                .buttonStyle(.glass)
                             }
-                            .buttonStyle(.glassProminent)
                         case .collection:
                             CollectionTab()
                         }
