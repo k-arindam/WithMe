@@ -32,7 +32,7 @@ struct CollectionTab: View {
                         gradient: Gradient(colors: [.black.opacity(0.6), .clear]),
                         center: .bottomTrailing,
                         startRadius: 0,
-                        endRadius: 150
+                        endRadius: 200
                     )
                 )
             
@@ -47,10 +47,11 @@ struct CollectionTab: View {
                     Image(systemName: "square.and.arrow.up")
                 }
             }
-            .buttonStyle(.glass)
+            .glassButtonStyleWithFallback()
             .padding(8.0)
         }
         .clipShape(clipShape)
+        .glassEffectWithFallback(in: clipShape)
     }
     
     var body: some View {
@@ -71,7 +72,7 @@ struct CollectionTab: View {
                     .resizable()
                     .scaledToFill()
                     .clipShape(clipShape)
-                    .glassEffect(in: clipShape)
+                    .glassEffectWithFallback(in: clipShape)
             }
         }
     }

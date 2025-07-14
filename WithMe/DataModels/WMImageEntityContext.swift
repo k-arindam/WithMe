@@ -12,5 +12,5 @@ struct WMImageEntityContext: Portable {
     let image: Data
     let ocrData: OCRData
     let caption: Caption
-    let embedding: Embedding
+    let vector: Vector
 }

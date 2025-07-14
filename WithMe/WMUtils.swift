@@ -27,7 +27,7 @@ internal final class WMUtils {
         for store in WMMediaStore.allCases {
             let dir = documentDir.appendingPathComponent(store.rawValue)
             
-            if !fileManager.fileExists(atPath: dir.path()) {
+            if !exists(at: dir) {
                 try? fileManager.createDirectory(at: dir, withIntermediateDirectories: true)
             }
         }
@@ -39,5 +39,9 @@ internal final class WMUtils {
     
     static func generateURL(for name: String, at store: WMMediaStore) -> URL {
         documentDir.appendingPathComponent(store.rawValue + "/" + name)
+    }
+    
+    static func exists(at url: URL) -> Bool {
+        fileManager.fileExists(atPath: url.path())
     }
 }

@@ -15,7 +15,7 @@ internal final class WMDatabaseService {
     let decoder = JSONDecoder()
     let fileManager = FileManager.default
 //    let userdataCollection = Firestore.firestore().collection("user-data")
-    let databaseQueue = DispatchQueue(label: "in.karindam.WithMe.databaseQueue", qos: .background)
+    let databaseQueue = DispatchQueue(label: "in.karindam.WithMe.WMDatabaseServiceQueue", qos: .background)
     
     func fetchUserData<T>() -> [T] where T: Portable {
         if let data = try? Data(contentsOf: userDataURL),

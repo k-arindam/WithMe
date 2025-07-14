@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+internal enum WMError: Error {
+    case modelUnavailable
+    case indexUnavailable
+    case invalidURL
+}

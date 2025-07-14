@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 
 internal struct WMEntity: Portable {
-    init(image: Data) {
+    init(image: Data, indexRef: UInt64) {
         let id = UUID()
         let type = WMEntityType.image
         let store = type.store
@@ -21,6 +21,7 @@ internal struct WMEntity: Portable {
         let thumbnailURL = store.rawValue + "/" + thumbnailName
         
         self.id = id
+        self.indexRef = indexRef
         
         self.url = fileURL
         self.thumbnailURL = thumbnailURL
@@ -32,6 +33,7 @@ internal struct WMEntity: Portable {
     }
     
     let id: UUID
+    let indexRef: UInt64
     let url: String?
     let thumbnailURL: String?
     let persistedData: Data?
@@ -57,13 +59,14 @@ internal struct WMEntity: Portable {
     
     enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case indexRef
         case url
         case thumbnailURL
         case persistedData
         case type
     }
     
-    func write() -> Void {
+    func write() -> CGImage? {
         guard let fullURL,
               let fullThumbnailURL,
               let temporaryData,
@@ -71,9 +74,11 @@ internal struct WMEntity: Portable {
               let thumbnailImage = image.cropToSquare(size: .init(width: 128, height: 128)),
               let imageData = image.jpegData(compressionQuality: 1.0),
               let thumbnailImagedata = thumbnailImage.jpegData(compressionQuality: 0.7)
-        else { return }
+        else { return nil }
         
         try? imageData.write(to: fullURL)
         try? thumbnailImagedata.write(to: fullThumbnailURL)
+        
+        return image.cgImage
     }
 }

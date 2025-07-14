@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1126E74A2E240E6E0024B619 /* USearch in Frameworks */ = {isa = PBXBuildFile; productRef = 1126E7492E240E6E0024B619 /* USearch */; };
+		1126E74D2E240FC60024B619 /* UForm in Frameworks */ = {isa = PBXBuildFile; productRef = 1126E74C2E240FC60024B619 /* UForm */; };
 		1170D69A2E19702C00F1E76D /* MLXKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1170D6992E19702C00F1E76D /* MLXKit */; };
 		11D27B0B2E1875B400F7103B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 11D27B0A2E1875B400F7103B /* FirebaseAnalytics */; };
 		11D27B0D2E1875B400F7103B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 11D27B0C2E1875B400F7103B /* FirebaseAuth */; };
@@ -77,9 +79,11 @@
 			files = (
 				11FEFF612E170501000AEDB8 /* AwesomeNavigation in Frameworks */,
 				11FEFF642E170534000AEDB8 /* SwiftUICamera in Frameworks */,
+				1126E74A2E240E6E0024B619 /* USearch in Frameworks */,
 				11D27B0F2E1875B400F7103B /* FirebaseCrashlytics in Frameworks */,
 				1170D69A2E19702C00F1E76D /* MLXKit in Frameworks */,
 				11D27B0B2E1875B400F7103B /* FirebaseAnalytics in Frameworks */,
+				1126E74D2E240FC60024B619 /* UForm in Frameworks */,
 				11D27B0D2E1875B400F7103B /* FirebaseAuth in Frameworks */,
 				11D27B112E1875B400F7103B /* FirebaseFirestore in Frameworks */,
 			);
@@ -150,6 +154,8 @@
 				11D27B0E2E1875B400F7103B /* FirebaseCrashlytics */,
 				11D27B102E1875B400F7103B /* FirebaseFirestore */,
 				1170D6992E19702C00F1E76D /* MLXKit */,
+				1126E7492E240E6E0024B619 /* USearch */,
+				1126E74C2E240FC60024B619 /* UForm */,
 			);
 			productName = WithMe;
 			productReference = 11FEFF192E16FBFA000AEDB8 /* WithMe.app */;
@@ -238,6 +244,8 @@
 				11FEFF622E170534000AEDB8 /* XCRemoteSwiftPackageReference "SwiftUICamera" */,
 				11D27B092E1875B400F7103B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				1170D6982E19702C00F1E76D /* XCRemoteSwiftPackageReference "MLXKit" */,
+				1126E7482E240E6E0024B619 /* XCRemoteSwiftPackageReference "usearch" */,
+				1126E74B2E240FC60024B619 /* XCRemoteSwiftPackageReference "uform" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 11FEFF1A2E16FBFA000AEDB8 /* Products */;
@@ -392,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -450,7 +458,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -483,6 +491,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -522,6 +531,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -653,6 +663,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1126E7482E240E6E0024B619 /* XCRemoteSwiftPackageReference "usearch" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/unum-cloud/usearch";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		1126E74B2E240FC60024B619 /* XCRemoteSwiftPackageReference "uform" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/unum-cloud/uform";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		1170D6982E19702C00F1E76D /* XCRemoteSwiftPackageReference "MLXKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/k-arindam/MLXKit";
@@ -688,6 +714,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1126E7492E240E6E0024B619 /* USearch */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1126E7482E240E6E0024B619 /* XCRemoteSwiftPackageReference "usearch" */;
+			productName = USearch;
+		};
+		1126E74C2E240FC60024B619 /* UForm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1126E74B2E240FC60024B619 /* XCRemoteSwiftPackageReference "uform" */;
+			productName = UForm;
+		};
 		1170D6992E19702C00F1E76D /* MLXKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1170D6982E19702C00F1E76D /* XCRemoteSwiftPackageReference "MLXKit" */;

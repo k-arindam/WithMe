@@ -6,15 +6,20 @@
 //
 
 import UIKit
-import Vision
+import UForm
+import USearch
+import CoreML
 
 internal final class WMEngine {
-    internal init() { self.loadModels() }
+    internal init() {}
     
-    let engineQueue: DispatchQueue = .init(label: "in.karindam.WithMe.WMEngineQueue", qos: .background)
+    let engineQueue: DispatchQueue = .init(label: "in.karindam.WithMe.WMEngineQueue", qos: .userInitiated)
     
-    var embedderText: ClipText? = nil
-    var embedderVision: ClipVision? = nil
+    var embedderText: TextEncoder? = nil
+    var embedderImage: ImageEncoder? = nil
+    
+    var index: USearchIndex? = nil
+    
     var captioner: BLIPImageCaptioning? = nil
     
     var mlConfig: MLModelConfiguration {
@@ -24,20 +29,17 @@ internal final class WMEngine {
         return config
     }
     
-    private func loadModels() -> Void {
-        self.engineQueue.async {
-            do {
-                try self.loadEmbedder()
-                try self.loadCaptioner()
-            } catch {
-                debugPrint("----->>> WMEngine.loadModels() Error: \(error)")
-            }
-        }
+    var indexURL: URL {
+        let fileName = "index.usearch"
+        return WMUtils.generateURL(for: fileName, at: .index)
     }
     
-    internal func process(image: UIImage) -> Void {
-        guard let cgImage = image.cgImage else { return }
-        
-        self.ocr(cgImage) { _ in }
+    internal func prepare() async -> Void {
+        do {
+            try await self.loadEmbedder()
+            try self.loadCaptioner()
+        } catch {
+            debugPrint("----->>> WMEngine.loadModels() Error: \(error)")
+        }
     }
 }

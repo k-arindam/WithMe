@@ -34,14 +34,14 @@ struct HomeView: View {
                             VStack {
                                 RoundedRectangle(cornerRadius: 12.0)
                                     .fill(.clear)
-                                    .glassEffect(in: .rect(cornerRadius: 12.0))
+                                    .glassEffectWithFallback(in: .rect(cornerRadius: 12.0))
                                     .frame(width: 300, height: 300)
                                 Button("Add Shortcut") {
                                     Task {
                                         await WMShortcutService().add(shortcut: .shareScreenShot)
                                     }
                                 }
-                                .buttonStyle(.glass)
+                                .glassButtonStyleWithFallback()
                             }
                         case .collection:
                             CollectionTab()

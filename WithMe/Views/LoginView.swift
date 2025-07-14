@@ -17,7 +17,7 @@ struct LoginView: View {
                     Text("Sign in with Apple")
                 }
             }
-            .buttonStyle(.glassProminent)
+            .glassButtonStyleWithFallback()
         }
     }
 }
