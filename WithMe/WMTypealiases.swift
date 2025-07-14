@@ -17,4 +17,4 @@ internal typealias OCRData = [String]
 
 internal typealias Caption = String
 
-internal typealias Embedding = [Float]
+//internal typealias Embedding = [Float]
