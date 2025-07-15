@@ -31,7 +31,10 @@ internal extension WMEngine {
     
     func insert(vector: Vector, at pos: UInt64) throws -> Void {
         guard let index else { throw WMError.indexUnavailable }
+        
+        try index.reserve(UInt32(pos))
         try index.add(key: pos, vector: vector)
+        
         try save(index: index)
         debugPrint("----->>> Inserted Vector !!!")
     }

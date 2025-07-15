@@ -20,22 +20,31 @@ internal final class WMDataController: ObservableObject, @unchecked Sendable {
     private var files: [URL] { userData.compactMap({ $0.fullURL }) }
     
     internal func handle(image data: Data) async -> Void {
-        self.queue.async {
-            let indexRef = UInt64(self.userData.count + 1)
-            
-            let entity = WMEntity(image: data, indexRef: indexRef)
-            guard let entityImage = entity.write() else { return }
-            
-            do {
-                let vector = try self.engine.embedding(image: entityImage)
-                debugPrint("----->>> Vector: \(vector.count)")
+        guard let uiImage = UIImage(data: data), let cgImage = uiImage.cgImage else { return }
+        
+        let indexRef = UInt64(self.userData.count)
+        
+        self.engine.ocr(cgImage) { ocrData in
+            self.queue.async {
+                let entity = WMEntity(
+                    image: data,
+                    indexRef: indexRef,
+                    ocrData: ocrData
+                )
                 
-                if !vector.isEmpty {
-                    try self.engine.insert(vector: vector, at: indexRef)
-                    self.insertUserData(entity)
+                guard let entityImage = entity.write() else { return }
+                
+                do {
+                    let vector = try self.engine.embedding(image: entityImage)
+                    debugPrint("----->>> Vector: \(vector.count)")
+                    
+                    if !vector.isEmpty {
+                        try self.engine.insert(vector: vector, at: indexRef)
+                        self.insertUserData(entity)
+                    }
+                } catch {
+                    debugPrint("----->>> handle(image data: Data) Error: \(error)")
                 }
-            } catch {
-                debugPrint("----->>> handle(image data: Data) Error: \(error)")
             }
         }
     }
@@ -45,6 +54,7 @@ internal final class WMDataController: ObservableObject, @unchecked Sendable {
         
         let _ = Task.detached {
             await self.engine.prepare()
+            self.engine.prompt(with: [self.userData.first!], for: "Explain in details what you can see and understand from this images.")
         }
     }
     

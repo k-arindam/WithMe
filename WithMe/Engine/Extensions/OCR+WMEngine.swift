@@ -13,7 +13,7 @@ internal extension WMEngine {
         let request = VNRecognizeTextRequest { req, error in
             if error == nil, let results = req.results as? [VNRecognizedTextObservation] {
                 let data = results.compactMap { $0.topCandidates(1).first?.string }
-                completion(data)
+                completion(data as OCRData)
                 return
             }
             
