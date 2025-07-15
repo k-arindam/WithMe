@@ -9,12 +9,12 @@ import UIKit
 import Foundation
 
 internal struct WMEntity: Portable {
-    init(image: Data, indexRef: UInt64) {
+    init(image: Data, indexRef: UInt64, ocrData: OCRData? = nil, caption: Caption? = nil) {
         let id = UUID()
         let type = WMEntityType.image
         let store = type.store
         
-        let fileName = type.rawValue + id.uuidString + ".jpg"
+        let fileName = Self.fileName(type: type, id: id)
         let fileURL = store.rawValue + "/" + fileName
         
         let thumbnailName = type.rawValue + "-thumbnail-" + id.uuidString + ".jpg"
@@ -23,10 +23,16 @@ internal struct WMEntity: Portable {
         self.id = id
         self.indexRef = indexRef
         
+        self.timestamp = .now
+        
+        self.ocrData = ocrData ?? OCRData()
+        self.caption = caption ?? Caption()
+        
         self.url = fileURL
         self.thumbnailURL = thumbnailURL
         
         self.persistedData = nil
+        
         self.type = type
         
         self.temporaryData = image
@@ -34,12 +40,24 @@ internal struct WMEntity: Portable {
     
     let id: UUID
     let indexRef: UInt64
+    
+    let timestamp: Date
+    
+    let ocrData: OCRData
+    let caption: Caption
+    
     let url: String?
     let thumbnailURL: String?
+    
     let persistedData: Data?
+    
     let type: WMEntityType
     
     private var temporaryData: Data?
+    
+    var fileName: String {
+        Self.fileName(type: self.type, id: self.id)
+    }
     
     var fullURL: URL? {
         if let url {
@@ -60,6 +78,9 @@ internal struct WMEntity: Portable {
     enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case indexRef
+        case timestamp
+        case ocrData
+        case caption
         case url
         case thumbnailURL
         case persistedData
@@ -80,5 +101,9 @@ internal struct WMEntity: Portable {
         try? thumbnailImagedata.write(to: fullThumbnailURL)
         
         return image.cgImage
+    }
+    
+    private static func fileName(type: WMEntityType, id: UUID) -> String {
+        type.rawValue + id.uuidString + ".jpg"
     }
 }

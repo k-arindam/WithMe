@@ -20,6 +20,8 @@ internal final class WMEngine {
     
     var index: USearchIndex? = nil
     
+    var llmAvailable: Bool = false
+    
     var captioner: BLIPImageCaptioning? = nil
     
     var mlConfig: MLModelConfiguration {
