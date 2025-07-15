@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var dataController: WMDataController
     
-    @State private var currentTab: HomeViewTab = .collection
+    @State private var currentTab: HomeViewTab = .intelliSpace
     
     let shortcutService = WMShortcutService()
     
@@ -28,23 +28,14 @@ struct HomeView: View {
             
             TabView(selection: $currentTab) {
                 ForEach(HomeViewTab.allCases) { tab in
-                    Tab(value: tab) {
+                    Tab(value: tab, role: tab.role) {
                         switch tab {
                         case .intelliSpace:
-                            VStack {
-                                RoundedRectangle(cornerRadius: 12.0)
-                                    .fill(.clear)
-                                    .glassEffectWithFallback(in: .rect(cornerRadius: 12.0))
-                                    .frame(width: 300, height: 300)
-                                Button("Add Shortcut") {
-                                    Task {
-                                        await WMShortcutService().add(shortcut: .shareScreenShot)
-                                    }
-                                }
-                                .glassButtonStyleWithFallback()
-                            }
+                            IntelliSpaceTab()
                         case .collection:
                             CollectionTab()
+                        case .settings:
+                            SettingsTab()
                         }
                     } label: {
                         Label(tab.rawValue, systemImage: tab.icon)
@@ -59,6 +50,7 @@ struct HomeView: View {
         
         case intelliSpace = "IntelliSpace"
         case collection = "Collection"
+        case settings = "Settings"
         
         var icon: String {
             switch self {
@@ -66,6 +58,17 @@ struct HomeView: View {
                 return "apple.intelligence"
             case .collection:
                 return "list.and.film"
+            case .settings:
+                return "gear"
+            }
+        }
+        
+        var role: TabRole? {
+            switch self {
+            case .intelliSpace:
+                return .search
+            default:
+                return nil
             }
         }
     }

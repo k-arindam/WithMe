@@ -22,7 +22,7 @@ internal final class WMDataController: ObservableObject, @unchecked Sendable {
     internal func handle(image data: Data) async -> Void {
         guard let uiImage = UIImage(data: data), let cgImage = uiImage.cgImage else { return }
         
-        let indexRef = UInt64(self.userData.count + 1)
+        let indexRef = UInt64(self.userData.count)
         
         self.engine.ocr(cgImage) { ocrData in
             self.queue.async {
@@ -39,7 +39,7 @@ internal final class WMDataController: ObservableObject, @unchecked Sendable {
                     debugPrint("----->>> Vector: \(vector.count)")
                     
                     if !vector.isEmpty {
-    //                    try self.engine.insert(vector: vector, at: indexRef)
+                        try self.engine.insert(vector: vector, at: indexRef)
                         self.insertUserData(entity)
                     }
                 } catch {
