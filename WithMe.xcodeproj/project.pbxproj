@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1116E2192E26F24B00BACDCD /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 1116E2182E26F24B00BACDCD /* ZIPFoundation */; };
 		1126E74A2E240E6E0024B619 /* USearch in Frameworks */ = {isa = PBXBuildFile; productRef = 1126E7492E240E6E0024B619 /* USearch */; };
 		1126E74D2E240FC60024B619 /* UForm in Frameworks */ = {isa = PBXBuildFile; productRef = 1126E74C2E240FC60024B619 /* UForm */; };
 		1170D69A2E19702C00F1E76D /* MLXKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1170D6992E19702C00F1E76D /* MLXKit */; };
@@ -86,6 +87,7 @@
 				1126E74D2E240FC60024B619 /* UForm in Frameworks */,
 				11D27B0D2E1875B400F7103B /* FirebaseAuth in Frameworks */,
 				11D27B112E1875B400F7103B /* FirebaseFirestore in Frameworks */,
+				1116E2192E26F24B00BACDCD /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +158,7 @@
 				1170D6992E19702C00F1E76D /* MLXKit */,
 				1126E7492E240E6E0024B619 /* USearch */,
 				1126E74C2E240FC60024B619 /* UForm */,
+				1116E2182E26F24B00BACDCD /* ZIPFoundation */,
 			);
 			productName = WithMe;
 			productReference = 11FEFF192E16FBFA000AEDB8 /* WithMe.app */;
@@ -246,6 +249,7 @@
 				1170D6982E19702C00F1E76D /* XCRemoteSwiftPackageReference "MLXKit" */,
 				1126E7482E240E6E0024B619 /* XCRemoteSwiftPackageReference "usearch" */,
 				1126E74B2E240FC60024B619 /* XCRemoteSwiftPackageReference "uform" */,
+				1116E2172E26F24B00BACDCD /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 11FEFF1A2E16FBFA000AEDB8 /* Products */;
@@ -477,7 +481,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H56BQC5KZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WithMe/Info.plist;
@@ -517,7 +521,7 @@
 				CODE_SIGN_ENTITLEMENTS = WithMe/WithMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = H56BQC5KZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WithMe/Info.plist;
@@ -663,6 +667,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1116E2172E26F24B00BACDCD /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.19;
+			};
+		};
 		1126E7482E240E6E0024B619 /* XCRemoteSwiftPackageReference "usearch" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/unum-cloud/usearch";
@@ -714,6 +726,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1116E2182E26F24B00BACDCD /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1116E2172E26F24B00BACDCD /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
 		1126E7492E240E6E0024B619 /* USearch */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1126E7482E240E6E0024B619 /* XCRemoteSwiftPackageReference "usearch" */;

@@ -17,6 +17,7 @@ struct WithMeApp: App {
     
     init() {
         WMUtils.createDirectories()
+        WMUtils.copyResources()
         
         let dataController = WMDataController()
         AppDependencyManager.shared.add(key: WMConstants.dataControllerKey, dependency: dataController)

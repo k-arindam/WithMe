@@ -9,7 +9,6 @@ import SwiftUI
 
 struct IntelliSpaceTab: View {
     let textfieldShape = Capsule()
-    let shortcutService = WMShortcutService()
     
     @State private var input = String()
     

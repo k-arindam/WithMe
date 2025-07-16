@@ -14,9 +14,8 @@ internal final class WMShortcutService {
     @MainActor
     internal func add(shortcut: WMShortcut, from target: WMShortcutTarget = .remote) async -> Bool {
         let bundle = Bundle.main
-        let app = UIApplication.shared
         
-        var url: URL? = nil
+        var url: URL!
         
         switch target {
         case .asset:
@@ -25,7 +24,20 @@ internal final class WMShortcutService {
             url = shortcut.remoteURL
         }
         
-        if let url, app.canOpenURL(url) {
+        return await open(url: url)
+    }
+    
+    @MainActor
+    internal func run(shortcut: WMShortcut) async -> Bool {
+        guard let url = URL(string: "shortcuts://run-shortcut?name=\(shortcut.rawValue)") else { return false }
+        return await open(url: url)
+    }
+    
+    @MainActor
+    private func open(url: URL) async -> Bool {
+        let app = UIApplication.shared
+        
+        if app.canOpenURL(url) {
             await app.open(url)
             return true
         }

@@ -61,6 +61,9 @@ struct CollectionTab: View {
                     buildEntityCard(for: data)
                 }
             }
+            
+            Color.clear
+                .frame(height: 100.0)
         }
         .scrollIndicators(.never)
         .padding(spacing)
@@ -70,9 +73,10 @@ struct CollectionTab: View {
                let uiImage = UIImage(contentsOfFile: url.path()) {
                 Image(uiImage: uiImage)
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
                     .clipShape(clipShape)
                     .glassEffectWithFallback(in: clipShape)
+                    .padding(42.0)
             }
         }
     }

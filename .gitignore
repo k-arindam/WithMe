@@ -64,6 +64,7 @@ fastlane/test_output
 Keys/
 WithMe/GoogleService-Info.plist
 WithMe/MLModels/
+WithMe/MLModels/uform3-image-text-english-small/
 Models/
 *.mlmodel
 *.mlpackage

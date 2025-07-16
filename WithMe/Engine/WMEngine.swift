@@ -36,9 +36,9 @@ internal final class WMEngine {
         return WMUtils.generateURL(for: fileName, at: .index)
     }
     
-    internal func prepare() async -> Void {
+    internal func prepare() -> Void {
         do {
-            try await self.loadEmbedder()
+            try self.loadEmbedder()
             try self.loadCaptioner()
         } catch {
             debugPrint("----->>> WMEngine.loadModels() Error: \(error)")

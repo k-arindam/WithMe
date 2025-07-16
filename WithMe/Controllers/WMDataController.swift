@@ -22,7 +22,7 @@ internal final class WMDataController: ObservableObject, @unchecked Sendable {
     internal func handle(image data: Data) async -> Void {
         guard let uiImage = UIImage(data: data), let cgImage = uiImage.cgImage else { return }
         
-        let indexRef = UInt64(self.userData.count)
+        let indexRef = UInt64(self.userData.count + 1)
         
         self.engine.ocr(cgImage) { ocrData in
             self.queue.async {
@@ -52,9 +52,15 @@ internal final class WMDataController: ObservableObject, @unchecked Sendable {
     private func prepare() -> Void {
         self.userData = db.fetchUserData()
         
-        let _ = Task.detached {
-            await self.engine.prepare()
-            self.engine.prompt(with: [self.userData.first!], for: "Explain in details what you can see and understand from this images.")
+        self.queue.async {
+            self.engine.prepare()
+            
+            if let vector = try? self.engine.embedding(text: "List all shortcuts saved by me") {
+                let resp = try? self.engine.search(for: vector)
+                debugPrint("----->>> Vector Response: \(String(describing: resp))")
+            }
+            
+//            self.engine.prompt(with: self.userData, for: "Explain in details what you can see and understand from this images.")
         }
     }
     

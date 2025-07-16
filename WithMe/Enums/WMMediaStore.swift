@@ -11,5 +11,6 @@ enum WMMediaStore: String, Sendable, CaseIterable {
     case json = "WMJSONStore"
     case index = "WMIndexStore"
     case image = "WMImageStore"
+    case model = "WMModelStore"
     case document = "WMDocumentStore"
 }

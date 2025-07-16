@@ -12,15 +12,24 @@ import UForm
 import USearch
 
 internal extension WMEngine {
-    func loadEmbedder() async throws -> Void {
-        self.embedderText = try await TextEncoder(
-            modelName: "unum-cloud/uform3-image-text-english-small",
+    func loadEmbedder() throws -> Void {
+        let bundle = Bundle.main
+        let configURL = bundle.url(forResource: "config", withExtension: "json")!
+        let tokenizerURL = bundle.url(forResource: "tokenizer", withExtension: "json")!
+        let textEncoderURL = WMUtils.generateURL(for: "text_encoder.mlpackage", at: .model)
+        let imageEncoderURL = WMUtils.generateURL(for: "image_encoder.mlpackage", at: .model)
+        
+        self.embedderText = try TextEncoder(
+            modelPath: textEncoderURL.path(),
+            configPath: configURL.path(),
+            tokenizerPath: tokenizerURL.path(),
             computeUnits: .all
         )
         debugPrint("----->>> Loaded Text Embedder !!!")
         
-        self.embedderImage = try await ImageEncoder(
-            modelName: "unum-cloud/uform3-image-text-english-small",
+        self.embedderImage = try ImageEncoder(
+            modelPath: imageEncoderURL.path(),
+            configPath: configURL.path(),
             computeUnits: .all
         )
         debugPrint("----->>> Loaded Image Embedder !!!")
@@ -56,7 +65,7 @@ internal extension WMEngine {
     func search(for vector: Vector) throws -> [USearchKey] {
         guard let index else { throw WMError.indexUnavailable }
         
-        let result = try index.search(vector: vector, count: 10)
+        let result = try index.search(vector: vector, count: 3)
         return result.0
     }
     
