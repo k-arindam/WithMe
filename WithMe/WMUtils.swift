@@ -84,4 +84,13 @@ internal final class WMUtils {
     static func exists(at url: URL) -> Bool {
         fileManager.fileExists(atPath: url.path())
     }
+    
+    static func fetchAppVersion() -> String {
+        if let info = bundle.infoDictionary,
+           let version = info["CFBundleShortVersionString"] as? String {
+            return version
+        }
+        
+        return String()
+    }
 }

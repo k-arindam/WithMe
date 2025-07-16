@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AppIntents
 
 @main
 struct WithMeApp: App {
@@ -16,14 +15,10 @@ struct WithMeApp: App {
     private let authController: WMAuthController
     
     init() {
-        WMUtils.createDirectories()
-        WMUtils.copyResources()
+        let payload = WMAppInitializer.shared.start()
         
-        let dataController = WMDataController()
-        AppDependencyManager.shared.add(key: WMConstants.dataControllerKey, dependency: dataController)
-        
-        self.dataController = dataController
-        self.authController = WMAuthController()
+        self.dataController = payload.data
+        self.authController = payload.auth
     }
     
     var body: some Scene {

@@ -10,22 +10,18 @@ import Foundation
 internal final class WMDefaults {
     private init() {}
     
-    static let defaults = UserDefaults.standard
+    private static let defaults = UserDefaults.standard
+    private static let userDataKey = "in.karindam.WithMe.userData"
+    private static let setupFinishedKey = "in.karindam.WithMe.setupFinished"
     
     static var setupFinished: Bool {
-        let key = "in.karindam.WithMe.setupFinished"
-        let value = defaults.bool(forKey: key)
-        if !value { defaults.set(true, forKey: key) }
+        let value = defaults.bool(forKey: setupFinishedKey)
+        if !value { defaults.set(true, forKey: setupFinishedKey) }
         return value
     }
     
-    static var userID: String {
-        let key = "in.karindam.WithMe.userID"
-        guard let value = defaults.string(forKey: key) else {
-            let newValue = UUID().uuidString
-            defaults.set(newValue, forKey: key)
-            return newValue
-        }
-        return value
+    static var userData: Data? {
+        get { defaults.data(forKey: userDataKey) }
+        set { defaults.set(newValue, forKey: userDataKey) }
     }
 }

@@ -9,13 +9,15 @@ import Foundation
 import FirebaseFirestore
 
 internal final class WMDatabaseService {
-    let userID: UUID = UUID(uuidString: WMDefaults.userID)!
+    internal init(with userID: UUID) {
+        self.userID = userID
+    }
     
-    let encoder = JSONEncoder()
-    let decoder = JSONDecoder()
-    let fileManager = FileManager.default
-//    let userdataCollection = Firestore.firestore().collection("user-data")
-    let databaseQueue = DispatchQueue(label: "in.karindam.WithMe.WMDatabaseServiceQueue", qos: .background)
+    private let userID: UUID
+    private let encoder = JSONEncoder()
+    private let decoder = JSONDecoder()
+
+    private let databaseQueue = DispatchQueue(label: "in.karindam.WithMe.WMDatabaseServiceQueue", qos: .background)
     
     func fetchUserData<T>() -> [T] where T: Portable {
         if let data = try? Data(contentsOf: userDataURL),
