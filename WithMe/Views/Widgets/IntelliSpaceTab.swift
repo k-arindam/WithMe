@@ -20,36 +20,46 @@ struct IntelliSpaceTab: View {
     
     var body: some View {
         VStack(alignment: .center, spacing: 24.0) {
-            ScrollViewReader { proxy in
-                ScrollView(.vertical) {
-                    LazyVStack {
-                        ForEach(dataController.messages) { message in
-                            HStack {
-                                if message.sender == .user { Spacer() }
-                                
-                                Group {
-                                    switch message.content {
-                                    case .text(let data):
-                                        Text(data)
-                                            .foregroundStyle(.white)
-                                    case .image(let data):
-                                        Image(uiImage: UIImage(data: data)!)
+            if dataController.messages.isEmpty {
+                Spacer()
+                Image(.handWave)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 58.0, height: 58.0)
+                .opacity(0.5)
+                Spacer()
+            } else {
+                ScrollViewReader { proxy in
+                    ScrollView(.vertical) {
+                        LazyVStack {
+                            ForEach(dataController.messages) { message in
+                                HStack {
+                                    if message.sender == .user { Spacer() }
+                                    
+                                    Group {
+                                        switch message.content {
+                                        case .text(let data):
+                                            Text(data)
+                                                .foregroundStyle(.white)
+                                        case .image(let data):
+                                            Image(uiImage: UIImage(data: data)!)
+                                        }
                                     }
+                                    .padding(12.0)
+                                    .background(message.sender.associatedColor)
+                                    .clipShape(.rect(cornerRadius: 18.0))
+                                    .frame(minWidth: 0.0, maxWidth: 242.0, alignment: message.sender == .user ? .trailing : .leading)
+                                    
+                                    if message.sender == .assistant { Spacer() }
                                 }
-                                .padding(12.0)
-                                .background(message.sender.associatedColor)
-                                .clipShape(.rect(cornerRadius: 18.0))
-                                .frame(minWidth: 0.0, maxWidth: 242.0, alignment: message.sender == .user ? .trailing : .leading)
-                                
-                                if message.sender == .assistant { Spacer() }
                             }
                         }
                     }
-                }
-                .scrollIndicators(.never)
-                .defaultScrollAnchor(.bottom)
-                .onChange(of: dataController.messages) { _, newValue in
-                    proxy.scrollTo(newValue.last, anchor: .bottom)
+                    .scrollIndicators(.never)
+                    .defaultScrollAnchor(.bottom)
+                    .onChange(of: dataController.messages) { _, newValue in
+                        proxy.scrollTo(newValue.last, anchor: .bottom)
+                    }
                 }
             }
             

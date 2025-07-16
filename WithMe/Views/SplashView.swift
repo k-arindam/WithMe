@@ -11,7 +11,7 @@ import AwesomeNavigation
 struct SplashView: View {
     @EnvironmentObject var navigation: AwesomeNavigation
     var body: some View {
-        Image("TxtLogoWhiteExt")
+        Image(.txtLogoWhiteExt)
             .resizable()
             .scaledToFit()
             .frame(width: 256)

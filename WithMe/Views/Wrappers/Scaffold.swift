@@ -19,7 +19,7 @@ struct Scaffold: View {
     var body: some View {
         ZStack {
             if enableBackground {
-                Image("background001")
+                Image(.background001)
                     .resizable()
                     .opacity(0.5)
                     .ignoresSafeArea()

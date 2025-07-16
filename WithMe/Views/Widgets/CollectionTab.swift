@@ -55,17 +55,40 @@ struct CollectionTab: View {
     }
     
     var body: some View {
-        ScrollView(.vertical) {
-            LazyVGrid(columns: columns, spacing: spacing) {
-                ForEach(dataController.userData) { data in
-                    buildEntityCard(for: data)
+        VStack(spacing: 32.0) {
+            if dataController.userData.isEmpty {
+                Group {
+                    Image(.empty)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 82, height: 82)
+                    Text("No screenshots in the vault yet!\nAdd and run the shortcut from anywhere — shout it to Siri or summon the mighty Action Button.\nOnce you do, your saved brilliance will show up right here.\n\nAnd hey, if the shortcut has gone rogue, just rescue it from the settings and bring it back to the party.")
+                        .multilineTextAlignment(.center)
+                    Button {
+                        Task {
+                            await WMShortcutService().run(shortcut: .shareScreenShot)
+                        }
+                    } label: {
+                        Label("Try it now!", systemImage: "figure.run")
+                    }
+                    .glassButtonStyleWithFallback()
                 }
+                .padding(.horizontal, 15.0)
+                .opacity(0.5)
+            } else {
+                ScrollView(.vertical) {
+                    LazyVGrid(columns: columns, spacing: spacing) {
+                        ForEach(dataController.userData) { data in
+                            buildEntityCard(for: data)
+                        }
+                    }
+                    
+                    Color.clear
+                        .frame(height: 100.0)
+                }
+                .scrollIndicators(.never)
             }
-            
-            Color.clear
-                .frame(height: 100.0)
         }
-        .scrollIndicators(.never)
         .padding(spacing)
         .ignoresSafeArea(.all, edges: [.bottom])
         .sheet(item: $selectedEntity) { entity in

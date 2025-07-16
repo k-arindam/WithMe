@@ -94,6 +94,7 @@ struct SettingsTab: View {
                 
                 TextField("Your Name", text: $newUserName)
                     .textFieldStyle(.roundedBorder)
+                    .padding(.vertical, 12.0)
                 
                 Button {
                     if !newUserName.isEmpty {

@@ -17,7 +17,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             HStack {
-                Image("TxtWhiteExt")
+                Image(.txtWhiteExt)
                     .resizable()
                     .scaledToFit()
                 Spacer()

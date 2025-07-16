@@ -78,8 +78,14 @@ internal final class WMDataController: ObservableObject, @unchecked Sendable {
                     var messages = [WMMessage]()
                     
                     for entity in matchingEntities {
-                        if entity.type == .image {
-                            //
+                        if entity.type == .image,
+                           let url = entity.fullURL,
+                           let data = try? Data(contentsOf: url) {
+                            let imgMsg = WMMessage(
+                                id: UUID(),
+                                content: .image(data: data),
+                                sender: .assistant
+                            )
                         }
                     }
                     
