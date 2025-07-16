@@ -9,9 +9,15 @@ import Foundation
 
 internal typealias JSON = [String: Any]
 
-internal typealias Portable = Codable & Sendable & Hashable & Identifiable
+internal typealias PortableWithoutID = Codable & Sendable & Hashable
 
-internal typealias VoidCallback = () -> Void
+internal typealias Portable = PortableWithoutID & Identifiable
+
+internal typealias VoidCallback = @Sendable () -> Void
+
+internal typealias StringCallback = @Sendable (String) -> Void
+
+internal typealias ResultCallback<T> = @Sendable (Result<T, Error>) -> Void
 
 internal typealias OCRData = [String]
 

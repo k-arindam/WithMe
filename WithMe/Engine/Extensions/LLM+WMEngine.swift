@@ -18,11 +18,11 @@ internal extension WMEngine {
         }
     }
     
-    func prompt(with entities: [WMEntity], for query: String) -> Void {
+    func prompt(with entities: [WMEntity], for query: String, completion: @escaping ResultCallback<String>) -> Void {
         let input = buildLLMInput(with: entities, for: query)
         
         if #available(iOS 26.0, *) {
-            promptFM(input)
+            promptFM(input, completion: completion)
         } else {
             promptLocalLLM(input)
         }
@@ -39,7 +39,7 @@ internal extension WMEngine {
     }
     
     @available(iOS 26.0, *)
-    private func promptFM(_ input: WMLLMInput) -> Void {
+    private func promptFM(_ input: WMLLMInput, completion: @escaping ResultCallback<String>) -> Void {
         debugPrint("----->>> promptFM() Input: \(input.prompt)")
         
         Task {
@@ -47,9 +47,9 @@ internal extension WMEngine {
                 let session = LanguageModelSession(instructions: input.instructions)
                 
                 let resp = try await session.respond(to: input.prompt)
-                
-                debugPrint("----->>> promptFM() Response: \(resp.content)")
+                completion(.success(resp.content))
             } catch {
+                completion(.failure(error))
                 debugPrint("----->>> promptFM() Error: \(error)")
             }
         }
@@ -84,8 +84,9 @@ internal extension WMEngine {
         for entity in entities {
             let formattedOCR = entity.ocrData.joined(separator: "\n  ")
             
+            // [[SCREENSHOT: \(entity.fileName)]]
+            
             context += """
-            [[SCREENSHOT: \(entity.fileName)]]
             - OCR Text: 
               \(formattedOCR)
             - Caption: \(entity.caption)

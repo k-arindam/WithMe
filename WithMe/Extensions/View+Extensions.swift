@@ -18,11 +18,15 @@ internal extension View {
         return AnyView(self)
     }
     
-    func glassButtonStyleWithFallback<S>(_ style: S = .borderedProminent) -> some View where S: PrimitiveButtonStyle {
+    func glassButtonStyleWithFallback<S>(_ style: S = .borderedProminent, prominent: Bool = false) -> AnyView where S: PrimitiveButtonStyle {
         if #available(iOS 26.0, *) {
-            return buttonStyle(.glass)
+            if prominent {
+                return AnyView(buttonStyle(.glassProminent))
+            } else {
+                return AnyView(buttonStyle(.glass))
+            }
         } else {
-            return buttonStyle(style)
+            return AnyView(buttonStyle(style))
         }
     }
 }

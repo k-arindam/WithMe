@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WMLLMInput: Portable {
+internal struct WMLLMInput: Portable {
     init(instructions: String, prompt: String) {
         self.id = UUID()
         self.instructions = instructions
@@ -17,4 +17,14 @@ struct WMLLMInput: Portable {
     let id: UUID
     let instructions: String
     let prompt: String
+    
+    func join() -> String {
+        """
+        \(instructions)
+        
+        ---
+        
+        \(prompt)
+        """
+    }
 }

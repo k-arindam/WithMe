@@ -17,10 +17,6 @@ struct SplashView: View {
             .frame(width: 256)
             .padding(32.0)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .task { @MainActor in
-                try? await Task.sleep(nanoseconds: 2_500_000_000)
-                navigation.updateRoot(with: WMRoutes.home)
-            }
     }
 }
 
