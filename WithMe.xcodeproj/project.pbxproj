@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11074B242E28BEC1006EEFD3 /* LocalLLMClient in Frameworks */ = {isa = PBXBuildFile; productRef = 11074B232E28BEC1006EEFD3 /* LocalLLMClient */; };
+		11074B262E28BEC1006EEFD3 /* LocalLLMClientLlama in Frameworks */ = {isa = PBXBuildFile; productRef = 11074B252E28BEC1006EEFD3 /* LocalLLMClientLlama */; };
 		1116E2192E26F24B00BACDCD /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 1116E2182E26F24B00BACDCD /* ZIPFoundation */; };
 		1126E74A2E240E6E0024B619 /* USearch in Frameworks */ = {isa = PBXBuildFile; productRef = 1126E7492E240E6E0024B619 /* USearch */; };
 		1126E74D2E240FC60024B619 /* UForm in Frameworks */ = {isa = PBXBuildFile; productRef = 1126E74C2E240FC60024B619 /* UForm */; };
@@ -83,10 +85,12 @@
 				1126E74A2E240E6E0024B619 /* USearch in Frameworks */,
 				11D27B0F2E1875B400F7103B /* FirebaseCrashlytics in Frameworks */,
 				1170D69A2E19702C00F1E76D /* MLXKit in Frameworks */,
+				11074B262E28BEC1006EEFD3 /* LocalLLMClientLlama in Frameworks */,
 				11D27B0B2E1875B400F7103B /* FirebaseAnalytics in Frameworks */,
 				1126E74D2E240FC60024B619 /* UForm in Frameworks */,
 				11D27B0D2E1875B400F7103B /* FirebaseAuth in Frameworks */,
 				11D27B112E1875B400F7103B /* FirebaseFirestore in Frameworks */,
+				11074B242E28BEC1006EEFD3 /* LocalLLMClient in Frameworks */,
 				1116E2192E26F24B00BACDCD /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,6 +163,8 @@
 				1126E7492E240E6E0024B619 /* USearch */,
 				1126E74C2E240FC60024B619 /* UForm */,
 				1116E2182E26F24B00BACDCD /* ZIPFoundation */,
+				11074B232E28BEC1006EEFD3 /* LocalLLMClient */,
+				11074B252E28BEC1006EEFD3 /* LocalLLMClientLlama */,
 			);
 			productName = WithMe;
 			productReference = 11FEFF192E16FBFA000AEDB8 /* WithMe.app */;
@@ -250,6 +256,7 @@
 				1126E7482E240E6E0024B619 /* XCRemoteSwiftPackageReference "usearch" */,
 				1126E74B2E240FC60024B619 /* XCRemoteSwiftPackageReference "uform" */,
 				1116E2172E26F24B00BACDCD /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+				11074B222E28BEC1006EEFD3 /* XCRemoteSwiftPackageReference "LocalLLMClient" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 11FEFF1A2E16FBFA000AEDB8 /* Products */;
@@ -479,7 +486,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WithMe/WithMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = H56BQC5KZW;
 				ENABLE_PREVIEWS = YES;
@@ -508,6 +515,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -520,7 +528,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WithMe/WithMe.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = H56BQC5KZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -548,6 +556,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_INTEROP_MODE = objcxx;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -667,6 +676,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		11074B222E28BEC1006EEFD3 /* XCRemoteSwiftPackageReference "LocalLLMClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tattn/LocalLLMClient.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		1116E2172E26F24B00BACDCD /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
@@ -726,6 +743,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		11074B232E28BEC1006EEFD3 /* LocalLLMClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11074B222E28BEC1006EEFD3 /* XCRemoteSwiftPackageReference "LocalLLMClient" */;
+			productName = LocalLLMClient;
+		};
+		11074B252E28BEC1006EEFD3 /* LocalLLMClientLlama */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11074B222E28BEC1006EEFD3 /* XCRemoteSwiftPackageReference "LocalLLMClient" */;
+			productName = LocalLLMClientLlama;
+		};
 		1116E2182E26F24B00BACDCD /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1116E2172E26F24B00BACDCD /* XCRemoteSwiftPackageReference "ZIPFoundation" */;

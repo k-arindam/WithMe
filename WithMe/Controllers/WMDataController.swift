@@ -19,7 +19,7 @@ internal final class WMDataController: ObservableObject, @unchecked Sendable {
     @Published internal private(set) var userData = [WMEntity]()
     @Published internal private(set) var messages = [WMMessage]()
     @Published internal private(set) var inferMode: WMInferMode = .edge
-    @Published internal var responseMode: WMResponseMode = .searchOnly
+    @Published internal var responseMode: WMResponseMode = .searchAndGenerate
     
     private let engine: WMEngine
     private let db: WMDatabaseService

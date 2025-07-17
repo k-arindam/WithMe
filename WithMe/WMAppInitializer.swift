@@ -26,9 +26,9 @@ internal final class WMAppInitializer {
         
         AppDependencyManager.shared.add(key: WMConstants.dataControllerKey, dependency: dataController)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-            AwesomeNavigation.shared.pushReplacement(WMRoutes.home)
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+//            AwesomeNavigation.shared.pushReplacement(WMRoutes.home)
+//        }
         
         return (dataController, authController)
     }

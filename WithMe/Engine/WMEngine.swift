@@ -9,16 +9,24 @@ import UIKit
 import UForm
 import USearch
 import CoreML
+import LocalLLMClient
+import LocalLLMClientLlama
+//import LLM
 
 internal final class WMEngine {
     internal init() {}
     
+    let foundationBackend: Bool = false
     let engineQueue: DispatchQueue = .init(label: "in.karindam.WithMe.WMEngineQueue", qos: .userInitiated)
     
     var embedderText: TextEncoder? = nil
     var embedderImage: ImageEncoder? = nil
     
     var index: USearchIndex? = nil
+    
+    var llmModel: LLMSession.DownloadModel? = nil
+//    var llmModel: LlamaClient? = nil
+//    var llmModel: LLM? = nil
     
     var llmAvailable: Bool = false
     
@@ -39,6 +47,7 @@ internal final class WMEngine {
     internal func prepare() -> Void {
         do {
             try self.loadEmbedder()
+            try self.initLLM()
             try self.loadCaptioner()
         } catch {
             debugPrint("----->>> WMEngine.loadModels() Error: \(error)")

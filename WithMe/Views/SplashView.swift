@@ -10,6 +10,7 @@ import AwesomeNavigation
 
 struct SplashView: View {
     @EnvironmentObject var navigation: AwesomeNavigation
+    
     var body: some View {
         Image(.txtLogoWhiteExt)
             .resizable()
@@ -17,6 +18,10 @@ struct SplashView: View {
             .frame(width: 256)
             .padding(32.0)
             .frame(maxWidth: .infinity, alignment: .leading)
+            .task {
+                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                navigation.pushReplacement(WMRoutes.home)
+            }
     }
 }
 

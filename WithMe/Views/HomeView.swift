@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject private var dataController: WMDataController
     
-    @State private var currentTab: HomeViewTab = .intelliSpace
+    @State private var currentTab: HomeViewTab = .collection
     
     let shortcutService = WMShortcutService()
     

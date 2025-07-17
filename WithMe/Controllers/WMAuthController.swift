@@ -37,7 +37,7 @@ internal final class WMAuthController: ObservableObject {
     @MainActor
     func updateUserName(to name: String) -> Void {
         guard let user else { return }
-        let newUser = user.copyWith(name: name)
+        let newUser = user.copyWith(name: name.trimmingCharacters(in: .whitespacesAndNewlines))
         self.user = newUser
         self.syncUserData()
     }
