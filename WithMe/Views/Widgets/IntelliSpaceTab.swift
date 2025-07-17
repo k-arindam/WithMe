@@ -26,7 +26,7 @@ struct IntelliSpaceTab: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 58.0, height: 58.0)
-                .opacity(0.5)
+                    .opacity(0.5)
                 Spacer()
             } else {
                 ScrollViewReader { proxy in
@@ -41,11 +41,14 @@ struct IntelliSpaceTab: View {
                                         case .text(let data):
                                             Text(data)
                                                 .foregroundStyle(.white)
+                                                .padding(12.0)
                                         case .image(let data):
                                             Image(uiImage: UIImage(data: data)!)
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: 242.0, height: 242.0)
                                         }
                                     }
-                                    .padding(12.0)
                                     .background(message.sender.associatedColor)
                                     .clipShape(.rect(cornerRadius: 18.0))
                                     .frame(minWidth: 0.0, maxWidth: 242.0, alignment: message.sender == .user ? .trailing : .leading)
@@ -91,7 +94,6 @@ struct IntelliSpaceTab: View {
             .disabled(disabled)
         }
         .padding(24.0)
-        .animation(.easeInOut, value: dataController.messages)
     }
 }
 

@@ -47,7 +47,14 @@ internal final class WMDataController: ObservableObject, @unchecked Sendable {
     private var files: [URL] { userData.compactMap({ $0.fullURL }) }
     
     internal func submit(input: String) -> Void {
+        func appendMessage(_ msg: WMMessage) -> Void {
+            self.mainQueue.async {
+                self.messages.append(msg)
+            }
+        }
+        
         guard !input.isEmpty, !busy else { return }
+        self.messages.removeAll()
         
         let query = input.trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -60,49 +67,49 @@ internal final class WMDataController: ObservableObject, @unchecked Sendable {
         self.messages.append(message)
         self.busy = true
         
-        self.dataQueue.async {
+        self.dataQueue.asyncAfter(deadline: .now() + 2) {
             if let queryVector = try? self.engine.embedding(text: query),
                let matchingKeys = try? self.engine.search(for: queryVector) {
                 let matchingEntities = self.userData.filter { matchingKeys.contains($0.indexRef) }
                 
-                self.engine.prompt(with: matchingEntities, for: query) { result in
-                    var response = String()
-                    
-                    switch result {
-                    case .success(let output):
-                        response = output
-                    default:
-                        response = "Whoopsie-doodle! My brain did a cartwheel and landed nowhere, mind giving it another go?"
+                for entity in matchingEntities {
+                    if entity.type == .image,
+                       let url = entity.fullURL,
+                       let data = try? Data(contentsOf: url) {
+                        let imgMsg = WMMessage(
+                            id: UUID(),
+                            content: .image(data: data),
+                            sender: .assistant
+                        )
+                        
+                        appendMessage(imgMsg)
                     }
-                    
-                    var messages = [WMMessage]()
-                    
-                    for entity in matchingEntities {
-                        if entity.type == .image,
-                           let url = entity.fullURL,
-                           let data = try? Data(contentsOf: url) {
-                            let imgMsg = WMMessage(
-                                id: UUID(),
-                                content: .image(data: data),
-                                sender: .assistant
-                            )
-                        }
-                    }
-                    
-                    messages.append(WMMessage(
-                        id: UUID(),
-                        content: .text(data: response),
-                        sender: .assistant
-                    ))
-                    
-                    self.mainQueue.async {
-                        self.messages.append(contentsOf: messages)
-                    }
-                    
-                    self.busy = false
                 }
                 
-                return
+                if self.responseMode == .searchAndGenerate {
+                    self.engine.prompt(with: matchingEntities, for: query) { result in
+                        var response = String()
+                        
+                        switch result {
+                        case .success(let output):
+                            response = output
+                        default:
+                            response = "Whoopsie-doodle! My brain did a cartwheel and landed nowhere, mind giving it another go?"
+                        }
+                        
+                        let txtMsg = WMMessage(
+                            id: UUID(),
+                            content: .text(data: response),
+                            sender: .assistant
+                        )
+                        
+                        appendMessage(txtMsg)
+                        
+                        self.busy = false
+                    }
+                    
+                    return
+                }
             }
             
             self.busy = false
