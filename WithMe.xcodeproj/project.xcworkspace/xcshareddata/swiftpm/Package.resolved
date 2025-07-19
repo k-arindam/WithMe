@@ -1,5 +1,5 @@
 {
-  "originHash" : "d92baf035239e353212364bf9ea1fdbb3bc9ff65978f2179a973c397c52eabea",
+  "originHash" : "4cb41c3f6b6cf18cbf90c895aed391fdf1551ddfef300e12957a6939c232b11a",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "61b85103a1aeed8218f17c794687781505fbbef5",
         "version" : "11.2.0"
+      }
+    },
+    {
+      "identity" : "apptics-sp",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/zoho/Apptics-SP.git",
+      "state" : {
+        "revision" : "6728ac7ef994e88b9c4577535885cb243cd99431",
+        "version" : "3.1.3"
       }
     },
     {

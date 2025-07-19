@@ -11,6 +11,7 @@
 		1126E74A2E240E6E0024B619 /* USearch in Frameworks */ = {isa = PBXBuildFile; productRef = 1126E7492E240E6E0024B619 /* USearch */; };
 		1126E74D2E240FC60024B619 /* UForm in Frameworks */ = {isa = PBXBuildFile; productRef = 1126E74C2E240FC60024B619 /* UForm */; };
 		1170D69A2E19702C00F1E76D /* MLXKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1170D6992E19702C00F1E76D /* MLXKit */; };
+		11A24DF62E2B6D9300BF05F6 /* AppticsAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 11A24DF52E2B6D9300BF05F6 /* AppticsAnalytics */; };
 		11D27B0B2E1875B400F7103B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 11D27B0A2E1875B400F7103B /* FirebaseAnalytics */; };
 		11D27B0D2E1875B400F7103B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 11D27B0C2E1875B400F7103B /* FirebaseAuth */; };
 		11D27B0F2E1875B400F7103B /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 11D27B0E2E1875B400F7103B /* FirebaseCrashlytics */; };
@@ -88,6 +89,7 @@
 				11D27B0F2E1875B400F7103B /* FirebaseCrashlytics in Frameworks */,
 				1170D69A2E19702C00F1E76D /* MLXKit in Frameworks */,
 				11D27B0B2E1875B400F7103B /* FirebaseAnalytics in Frameworks */,
+				11A24DF62E2B6D9300BF05F6 /* AppticsAnalytics in Frameworks */,
 				1126E74D2E240FC60024B619 /* UForm in Frameworks */,
 				11D27B0D2E1875B400F7103B /* FirebaseAuth in Frameworks */,
 				11D27B112E1875B400F7103B /* FirebaseFirestore in Frameworks */,
@@ -139,6 +141,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11FEFF3A2E16FBFB000AEDB8 /* Build configuration list for PBXNativeTarget "WithMe" */;
 			buildPhases = (
+				11A24DF72E2B6DBF00BF05F6 /* Apptics pre build */,
 				11FEFF152E16FBFA000AEDB8 /* Sources */,
 				11FEFF162E16FBFA000AEDB8 /* Frameworks */,
 				11FEFF172E16FBFA000AEDB8 /* Resources */,
@@ -165,6 +168,7 @@
 				1116E2182E26F24B00BACDCD /* ZIPFoundation */,
 				11EAC0452E2AECBB00C9D2A9 /* LocalLLMClient */,
 				11EAC0472E2AECBB00C9D2A9 /* LocalLLMClientLlama */,
+				11A24DF52E2B6D9300BF05F6 /* AppticsAnalytics */,
 			);
 			productName = WithMe;
 			productReference = 11FEFF192E16FBFA000AEDB8 /* WithMe.app */;
@@ -257,6 +261,7 @@
 				1126E74B2E240FC60024B619 /* XCRemoteSwiftPackageReference "uform" */,
 				1116E2172E26F24B00BACDCD /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				11EAC0442E2AECBB00C9D2A9 /* XCRemoteSwiftPackageReference "LocalLLMClient" */,
+				11A24DF42E2B6D9300BF05F6 /* XCRemoteSwiftPackageReference "Apptics-SP" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 11FEFF1A2E16FBFA000AEDB8 /* Products */;
@@ -295,6 +300,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		11A24DF72E2B6DBF00BF05F6 /* Apptics pre build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Apptics pre build";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh \"./Pods/Apptics-SDK/scripts/run\" --upload-symbols-for-configurations=\"Release, Appstore\" \n";
+		};
 		11D27B142E18772A00F7103B /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -708,6 +731,14 @@
 				minimumVersion = 0.0.2;
 			};
 		};
+		11A24DF42E2B6D9300BF05F6 /* XCRemoteSwiftPackageReference "Apptics-SP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zoho/Apptics-SP.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
 		11D27B092E1875B400F7103B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -762,6 +793,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1170D6982E19702C00F1E76D /* XCRemoteSwiftPackageReference "MLXKit" */;
 			productName = MLXKit;
+		};
+		11A24DF52E2B6D9300BF05F6 /* AppticsAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11A24DF42E2B6D9300BF05F6 /* XCRemoteSwiftPackageReference "Apptics-SP" */;
+			productName = AppticsAnalytics;
 		};
 		11D27B0A2E1875B400F7103B /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
