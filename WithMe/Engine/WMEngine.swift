@@ -9,9 +9,7 @@ import UIKit
 import UForm
 import USearch
 import CoreML
-import LocalLLMClient
 import LocalLLMClientLlama
-//import LLM
 
 internal final class WMEngine {
     internal init() {}
@@ -24,14 +22,10 @@ internal final class WMEngine {
     
     var index: USearchIndex? = nil
     
-    var llmModel: LLMSession.DownloadModel? = nil
-//    var llmModel: LlamaClient? = nil
-//    var llmModel: LLM? = nil
+    var llmClient: LlamaClient? = nil
     
     var llmAvailable: Bool = false
-    
-    var captioner: BLIPImageCaptioning? = nil
-    
+        
     var mlConfig: MLModelConfiguration {
         let config = MLModelConfiguration()
         config.allowLowPrecisionAccumulationOnGPU = true

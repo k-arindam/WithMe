@@ -5,6 +5,7 @@
 //  Created by nuuuron on 16/07/25.
 //
 
+import UIKit
 import AppIntents
 import AwesomeNavigation
 
@@ -13,6 +14,8 @@ internal final class WMAppInitializer {
     internal static let shared = WMAppInitializer()
     
     @MainActor func start() -> (data: WMDataController, auth: WMAuthController) {
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         WMUtils.createDirectories()
         WMUtils.copyResources()
         

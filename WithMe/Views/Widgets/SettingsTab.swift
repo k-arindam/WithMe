@@ -36,17 +36,21 @@ struct SettingsTab: View {
                 }
                 
                 Section("UTILS") {
-                    buildButton(label: Label("Add shortcut", systemImage: "plus.app")) {
+                    buildButton(label: Label("Add Shortcut", systemImage: "plus.app")) {
                         Task {
                             await shortcutService.add(shortcut: .shareScreenShot)
                         }
                     }
                     
-                    buildButton(label: Label("Run shortcut", systemImage: "bolt")) {
+                    buildButton(label: Label("Run Shortcut", systemImage: "bolt")) {
                         Task {
                             await shortcutService.run(shortcut: .shareScreenShot)
                         }
                     }
+                    
+//                    buildButton(label: Label("Show Onboarding", systemImage: "lightbulb.max")) {
+//                        //
+//                    }
                     
                     Picker("Response Mode", systemImage: "message", selection: $dataController.responseMode) {
                         ForEach(WMResponseMode.allCases) { mode in

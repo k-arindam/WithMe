@@ -133,7 +133,7 @@
       "location" : "https://github.com/tattn/LocalLLMClient.git",
       "state" : {
         "branch" : "main",
-        "revision" : "a93da3d45d39c37dcb460916d40cf9e4e10a06a1"
+        "revision" : "9d1bf96cb4547f9d3df7b0b5f441479a008f557a"
       }
     },
     {
@@ -151,7 +151,7 @@
       "location" : "https://github.com/ml-explore/mlx-swift-examples",
       "state" : {
         "branch" : "main",
-        "revision" : "8dfd9ee01eb99f7b362ef19cdf2254bdc4627b8c"
+        "revision" : "073e6577fbc886ec4e94a0e3adb2cc34e5ddebf5"
       }
     },
     {

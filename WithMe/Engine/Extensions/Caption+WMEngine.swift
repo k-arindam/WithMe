@@ -9,8 +9,6 @@ import Foundation
 
 internal extension WMEngine {
     func loadCaptioner() throws -> Void {
-        let config = self.mlConfig
-//        self.captioner = try BLIPImageCaptioning(configuration: config)
         debugPrint("----->>> Loaded Captioner")
     }
 }

@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct IntelliSpaceTab: View {
-    let textfieldShape = Capsule()
+    let textfieldShape: any Shape = Capsule()
+    let maxChatWidth: CGFloat = 300.0
     
     @State private var input = String()
     @EnvironmentObject private var dataController: WMDataController
+    @EnvironmentObject private var imageSheetController: WMImageSheetController
     
     @MainActor private func handleSubmit() -> Void {
         dataController.submit(input: input)
@@ -31,7 +33,7 @@ struct IntelliSpaceTab: View {
             } else {
                 ScrollViewReader { proxy in
                     ScrollView(.vertical) {
-                        LazyVStack {
+                        VStack {
                             ForEach(dataController.messages) { message in
                                 HStack {
                                     if message.sender == .user { Spacer() }
@@ -43,15 +45,19 @@ struct IntelliSpaceTab: View {
                                                 .foregroundStyle(.white)
                                                 .padding(12.0)
                                         case .image(let data):
-                                            Image(uiImage: UIImage(data: data)!)
+                                            let uiImage = UIImage(data: data)!
+                                            Image(uiImage: uiImage)
                                                 .resizable()
                                                 .scaledToFill()
-                                                .frame(width: 242.0, height: 242.0)
+                                                .frame(width: maxChatWidth, height: 200.0)
+                                                .onTapGesture {
+                                                    imageSheetController.present(with: uiImage)
+                                                }
                                         }
                                     }
                                     .background(message.sender.associatedColor)
                                     .clipShape(.rect(cornerRadius: 18.0))
-                                    .frame(minWidth: 0.0, maxWidth: 242.0, alignment: message.sender == .user ? .trailing : .leading)
+                                    .frame(minWidth: 0.0, maxWidth: maxChatWidth, alignment: message.sender == .user ? .trailing : .leading)
                                     
                                     if message.sender == .assistant { Spacer() }
                                 }

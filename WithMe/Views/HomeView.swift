@@ -15,30 +15,32 @@ struct HomeView: View {
     let shortcutService = WMShortcutService()
     
     var body: some View {
-        VStack {
-            HStack {
-                Image(.txtWhiteExt)
-                    .resizable()
-                    .scaledToFit()
-                Spacer()
-            }
-            .frame(height: 24.0)
-            .padding(12.0)
-            .padding(.top, 8.0)
-            
-            TabView(selection: $currentTab) {
-                ForEach(HomeViewTab.allCases) { tab in
-                    Tab(value: tab, role: tab.role) {
-                        switch tab {
-                        case .intelliSpace:
-                            IntelliSpaceTab()
-                        case .collection:
-                            CollectionTab()
-                        case .settings:
-                            SettingsTab()
+        ImageSheet {
+            VStack {
+                HStack {
+                    Image(.txtWhiteExt)
+                        .resizable()
+                        .scaledToFit()
+                    Spacer()
+                }
+                .frame(height: 24.0)
+                .padding(12.0)
+                .padding(.top, 8.0)
+                
+                TabView(selection: $currentTab) {
+                    ForEach(HomeViewTab.allCases) { tab in
+                        Tab(value: tab, role: tab.role) {
+                            switch tab {
+                            case .intelliSpace:
+                                IntelliSpaceTab()
+                            case .collection:
+                                CollectionTab()
+                            case .settings:
+                                SettingsTab()
+                            }
+                        } label: {
+                            Label(tab.rawValue, systemImage: tab.icon)
                         }
-                    } label: {
-                        Label(tab.rawValue, systemImage: tab.icon)
                     }
                 }
             }

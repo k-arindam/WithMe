@@ -12,9 +12,6 @@ internal final class WMConstants {
     
     internal static let dataControllerKey: String = "in.karindam.WithMe.DataController"
     
-    internal static let kElectricCyan: Color = Color("ElectricCyan")
-    internal static let kMidnightTeal: Color = Color("MidnightTeal")
-    
     internal static let anonymousUsernames: [String] = [
         "Anonymous Tiger", "Anonymous Octopus", "Anonymous Eagle", "Anonymous Fox", "Anonymous Shark",
         "Anonymous Parrot", "Anonymous Penguin", "Anonymous Panther", "Anonymous Tortoise", "Anonymous Lobster",

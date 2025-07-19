@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CollectionTab: View {
+    @EnvironmentObject private var imageSheetController: WMImageSheetController
     @EnvironmentObject private var dataController: WMDataController
     
     @State private var selectedEntity: WMEntity? = nil
@@ -38,7 +39,10 @@ struct CollectionTab: View {
             
             HStack {
                 Button {
-                    selectedEntity = entity
+                    if let url = entity.fullURL,
+                       let image = UIImage(contentsOfFile: url.path()) {
+                        imageSheetController.present(with: image)
+                    }
                 } label: {
                     Image(systemName: "arrow.up.left.and.arrow.down.right")
                 }

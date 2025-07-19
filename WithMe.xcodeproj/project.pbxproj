@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		11074B242E28BEC1006EEFD3 /* LocalLLMClient in Frameworks */ = {isa = PBXBuildFile; productRef = 11074B232E28BEC1006EEFD3 /* LocalLLMClient */; };
-		11074B262E28BEC1006EEFD3 /* LocalLLMClientLlama in Frameworks */ = {isa = PBXBuildFile; productRef = 11074B252E28BEC1006EEFD3 /* LocalLLMClientLlama */; };
 		1116E2192E26F24B00BACDCD /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 1116E2182E26F24B00BACDCD /* ZIPFoundation */; };
 		1126E74A2E240E6E0024B619 /* USearch in Frameworks */ = {isa = PBXBuildFile; productRef = 1126E7492E240E6E0024B619 /* USearch */; };
 		1126E74D2E240FC60024B619 /* UForm in Frameworks */ = {isa = PBXBuildFile; productRef = 1126E74C2E240FC60024B619 /* UForm */; };
@@ -17,6 +15,8 @@
 		11D27B0D2E1875B400F7103B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 11D27B0C2E1875B400F7103B /* FirebaseAuth */; };
 		11D27B0F2E1875B400F7103B /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 11D27B0E2E1875B400F7103B /* FirebaseCrashlytics */; };
 		11D27B112E1875B400F7103B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 11D27B102E1875B400F7103B /* FirebaseFirestore */; };
+		11EAC0462E2AECBB00C9D2A9 /* LocalLLMClient in Frameworks */ = {isa = PBXBuildFile; productRef = 11EAC0452E2AECBB00C9D2A9 /* LocalLLMClient */; };
+		11EAC0482E2AECBB00C9D2A9 /* LocalLLMClientLlama in Frameworks */ = {isa = PBXBuildFile; productRef = 11EAC0472E2AECBB00C9D2A9 /* LocalLLMClientLlama */; };
 		11FEFF612E170501000AEDB8 /* AwesomeNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 11FEFF602E170501000AEDB8 /* AwesomeNavigation */; };
 		11FEFF642E170534000AEDB8 /* SwiftUICamera in Frameworks */ = {isa = PBXBuildFile; productRef = 11FEFF632E170534000AEDB8 /* SwiftUICamera */; };
 /* End PBXBuildFile section */
@@ -80,17 +80,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11EAC0462E2AECBB00C9D2A9 /* LocalLLMClient in Frameworks */,
+				11EAC0482E2AECBB00C9D2A9 /* LocalLLMClientLlama in Frameworks */,
 				11FEFF612E170501000AEDB8 /* AwesomeNavigation in Frameworks */,
 				11FEFF642E170534000AEDB8 /* SwiftUICamera in Frameworks */,
 				1126E74A2E240E6E0024B619 /* USearch in Frameworks */,
 				11D27B0F2E1875B400F7103B /* FirebaseCrashlytics in Frameworks */,
 				1170D69A2E19702C00F1E76D /* MLXKit in Frameworks */,
-				11074B262E28BEC1006EEFD3 /* LocalLLMClientLlama in Frameworks */,
 				11D27B0B2E1875B400F7103B /* FirebaseAnalytics in Frameworks */,
 				1126E74D2E240FC60024B619 /* UForm in Frameworks */,
 				11D27B0D2E1875B400F7103B /* FirebaseAuth in Frameworks */,
 				11D27B112E1875B400F7103B /* FirebaseFirestore in Frameworks */,
-				11074B242E28BEC1006EEFD3 /* LocalLLMClient in Frameworks */,
 				1116E2192E26F24B00BACDCD /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,8 +163,8 @@
 				1126E7492E240E6E0024B619 /* USearch */,
 				1126E74C2E240FC60024B619 /* UForm */,
 				1116E2182E26F24B00BACDCD /* ZIPFoundation */,
-				11074B232E28BEC1006EEFD3 /* LocalLLMClient */,
-				11074B252E28BEC1006EEFD3 /* LocalLLMClientLlama */,
+				11EAC0452E2AECBB00C9D2A9 /* LocalLLMClient */,
+				11EAC0472E2AECBB00C9D2A9 /* LocalLLMClientLlama */,
 			);
 			productName = WithMe;
 			productReference = 11FEFF192E16FBFA000AEDB8 /* WithMe.app */;
@@ -256,7 +256,7 @@
 				1126E7482E240E6E0024B619 /* XCRemoteSwiftPackageReference "usearch" */,
 				1126E74B2E240FC60024B619 /* XCRemoteSwiftPackageReference "uform" */,
 				1116E2172E26F24B00BACDCD /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
-				11074B222E28BEC1006EEFD3 /* XCRemoteSwiftPackageReference "LocalLLMClient" */,
+				11EAC0442E2AECBB00C9D2A9 /* XCRemoteSwiftPackageReference "LocalLLMClient" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 11FEFF1A2E16FBFA000AEDB8 /* Products */;
@@ -501,7 +501,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				INFOPLIST_KEY_UISupportsDocumentBrowser = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -542,7 +542,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				INFOPLIST_KEY_UISupportsDocumentBrowser = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -676,14 +676,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		11074B222E28BEC1006EEFD3 /* XCRemoteSwiftPackageReference "LocalLLMClient" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tattn/LocalLLMClient.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		1116E2172E26F24B00BACDCD /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
@@ -724,6 +716,14 @@
 				minimumVersion = 11.15.0;
 			};
 		};
+		11EAC0442E2AECBB00C9D2A9 /* XCRemoteSwiftPackageReference "LocalLLMClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tattn/LocalLLMClient.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		11FEFF5F2E170501000AEDB8 /* XCRemoteSwiftPackageReference "AwesomeNavigation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/k-arindam/AwesomeNavigation.git";
@@ -743,16 +743,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		11074B232E28BEC1006EEFD3 /* LocalLLMClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 11074B222E28BEC1006EEFD3 /* XCRemoteSwiftPackageReference "LocalLLMClient" */;
-			productName = LocalLLMClient;
-		};
-		11074B252E28BEC1006EEFD3 /* LocalLLMClientLlama */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 11074B222E28BEC1006EEFD3 /* XCRemoteSwiftPackageReference "LocalLLMClient" */;
-			productName = LocalLLMClientLlama;
-		};
 		1116E2182E26F24B00BACDCD /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1116E2172E26F24B00BACDCD /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
@@ -792,6 +782,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 11D27B092E1875B400F7103B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		11EAC0452E2AECBB00C9D2A9 /* LocalLLMClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11EAC0442E2AECBB00C9D2A9 /* XCRemoteSwiftPackageReference "LocalLLMClient" */;
+			productName = LocalLLMClient;
+		};
+		11EAC0472E2AECBB00C9D2A9 /* LocalLLMClientLlama */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11EAC0442E2AECBB00C9D2A9 /* XCRemoteSwiftPackageReference "LocalLLMClient" */;
+			productName = LocalLLMClientLlama;
 		};
 		11FEFF602E170501000AEDB8 /* AwesomeNavigation */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -26,7 +26,7 @@ internal struct WMMessage: Portable {
             case .user:
                     .blue
             case .assistant:
-                    .gray
+                    .midnightTeal
             }
         }
     }

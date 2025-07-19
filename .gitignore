@@ -72,3 +72,4 @@ Models/
 *.mlpackagec
 *.bin
 *.zip
+*.gguf
