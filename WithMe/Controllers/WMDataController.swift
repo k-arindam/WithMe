@@ -67,7 +67,7 @@ internal final class WMDataController: ObservableObject, @unchecked Sendable {
         self.messages.append(message)
         self.busy = true
         
-        self.dataQueue.asyncAfter(deadline: .now() + 2) {
+        self.dataQueue.asyncAfter(deadline: .now() + 0.5) {
             if let queryVector = try? self.engine.embedding(text: query),
                let matchingKeys = try? self.engine.search(for: queryVector) {
                 let matchingEntities = self.userData.filter { matchingKeys.contains($0.indexRef) }
